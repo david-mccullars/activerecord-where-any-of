@@ -47,14 +47,14 @@ puts SomeRecord.owned_by('Fred').active_or_pending.to_sql
 ```
 
 > SELECT "some_records".* FROM "some_records"
-> WHERE "some_records"."owner" = 'Fred' AND (extra is not null) AND (("some_records"."active" = 't' OR "some_records"."pending" = 't'))
+WHERE "some_records"."owner" = 'Fred' AND (extra is not null) AND (("some_records"."active" = 't' OR "some_records"."pending" = 't'))
 
 ```rb
 puts SomeRecord.where_any_of(SomeRecord.where(:extra => 'A'), SomeRecord.owned_by('Bill'), 'active').to_sql
 ```
 
 > SELECT "some_records".* FROM "some_records"
-> WHERE (extra is not null) AND ((("some_records"."extra" = 'A' OR "some_records"."owner" = 'Bill') OR "some_records"."active" = 't'))
+WHERE (extra is not null) AND ((("some_records"."extra" = 'A' OR "some_records"."owner" = 'Bill') OR "some_records"."active" = 't'))
 
 Install:
 --------
