@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
   s.files = Dir['lib/**/*.rb']
 
-  s.add_runtime_dependency 'activerecord', '~> 3.0'
+  s.add_runtime_dependency 'activerecord', ['~> 3.0', ['~> 4.0']
   s.add_development_dependency "bundler", "~> 1.3"
   s.add_development_dependency "rake"
 end
