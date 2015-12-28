@@ -8,9 +8,20 @@ module ActiveRecord
         if c.is_a? Symbol or c.is_a? String
           c = self.unscoped.send(c)
         end
-        c.where_values.reduce(:and)
+        __convert_string_wheres(c.where_values).reduce(:and)
       end
       where(conditions.reduce(:or))
+    end
+
+    def __convert_string_wheres(wheres)
+      wheres.map do |w|
+        if w.is_a?(Arel::Nodes::Equality)
+          w
+        else
+          w = Arel.sql(w) if String === w
+          Arel::Nodes::Grouping.new(w)
+        end
+      end
     end
 
   end
