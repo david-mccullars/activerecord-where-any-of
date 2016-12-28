@@ -1,16 +1,25 @@
-activerecord-where-any-of
-=========================
+# ActiveRecord where_any_of
 
-Description:
------------
+* README:         https://github.com/david-mccullars/activerecord-where-any-of
+* Documentation:  http://www.rubydoc.info/github/david-mccullars/activerecord-where-any-of
+* Bug Reports:    https://github.com/david-mccullars/activerecord-where-any-of/issues
+
+
+## Status
+
+[![Travis Build Status](https://travis-ci.org/david-mccullars/activerecord-where-any-of.svg?branch=master)](https://travis-ci.org/david-mccullars/activerecord-where-any-of)
+[![Code Climate](https://codeclimate.com/github/david-mccullars/activerecord-where-any-of/badges/gpa.svg)](https://codeclimate.com/github/david-mccullars/activerecord-where-any-of)
+[![Test Coverage](https://codeclimate.com/github/david-mccullars/activerecord-where-any-of/badges/coverage.svg)](https://codeclimate.com/github/david-mccullars/activerecord-where-any-of/coverage)
+
+
+## Description
 
 Provides a mechanism for OR'ing together one or more AREL relations.  Normally when
 one performs `SomeModel.where(condition_1).where(condition_2)`, the result is to AND
 those conditions together.  Unfortunately, there is no good way of OR'ing them without
 converting the conditions into manual SQL.  This mixin addresses that issue.
 
-Usage:
-------
+## Usage
 
 `where_any_of` accepts any number of relations, symbols, or strings.  For symbols and strings,
 the corresponding method is called (unscoped) which is expected to return a relation.
@@ -60,8 +69,7 @@ puts SomeRecord.where_any_of(
 > SELECT "some_records".* FROM "some_records"
 > WHERE (extra is not null) AND ((("some_records"."extra" = 'A' OR "some_records"."owner" = 'Bill') OR "some_records"."active" = 't'))
 
-Install:
---------
+## Install
 
 In your app, add this line to your `Gemfile`:
 
