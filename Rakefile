@@ -1,23 +1,30 @@
 require "bundler/gem_tasks"
+require "rspec/core/rake_task"
 
-namespace :rspec do
-
-  desc "Run specs against ActiveRecord 3"
-  task :active_record_3 do
-    sh 'ACTIVE_RECORD_VERSION=3 rspec -O spec/spec.opts'
+module WithoutBundler
+  def run_task(*args)
+    Bundler.with_clean_env do
+      ENV['ACTIVE_RECORD_VERSION'] = $1 if name.to_s =~ /active_record_(\d+)/
+      super
+    end
   end
+end
 
-  desc "Run specs against ActiveRecord 4"
-  task :active_record_4 do
-    sh 'ACTIVE_RECORD_VERSION=4 rspec -O spec/spec.opts'
-  end
+RSpec::Core::RakeTask.prepend(WithoutBundler)
 
-  desc "Run specs against ActiveRecord 5"
-  task :active_record_5 do
-    sh 'ACTIVE_RECORD_VERSION=5 rspec -O spec/spec.opts'
+namespace :spec do
+  tasks = [3, 4, 5].map do |version|
+    name = "active_record_#{version}"
+    RSpec::Core::RakeTask.new(name).rspec_opts = '-O spec/spec.opts'
+    name
   end
 
   desc "Run specs against all three versions of ActiveRecord"
-  task all: [:active_record_3, :active_record_4, :active_record_5]
+  task all: tasks
+end
 
+require 'rdoc/task'
+RDoc::Task.new do |rdoc|
+  rdoc.main = "README.md"
+  rdoc.rdoc_files.include("README.md", "lib/**/*.rb")
 end

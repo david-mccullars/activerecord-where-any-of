@@ -1,0 +1,13 @@
+language: ruby
+rvm:
+  - 2.3.1
+before_install:
+  - gem install bundler -v 1.12.5
+  - gem install activerecord -v '~> 3'
+  - gem install activerecord -v '~> 4'
+  - gem install activerecord -v '~> 5'
+script:
+  - rake spec:all
+addons:
+    code_climate:
+        repo_token: a778d31468c1d1c1376890f708b04c93c7cc0af521a15e91c9ba00e08cfeeaf0

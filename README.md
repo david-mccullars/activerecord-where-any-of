@@ -9,7 +9,6 @@
 
 [![Travis Build Status](https://travis-ci.org/david-mccullars/activerecord-where-any-of.svg?branch=master)](https://travis-ci.org/david-mccullars/activerecord-where-any-of)
 [![Code Climate](https://codeclimate.com/github/david-mccullars/activerecord-where-any-of/badges/gpa.svg)](https://codeclimate.com/github/david-mccullars/activerecord-where-any-of)
-[![Test Coverage](https://codeclimate.com/github/david-mccullars/activerecord-where-any-of/badges/coverage.svg)](https://codeclimate.com/github/david-mccullars/activerecord-where-any-of/coverage)
 
 
 ## Description
