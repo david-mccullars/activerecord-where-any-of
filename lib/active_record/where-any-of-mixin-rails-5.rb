@@ -12,7 +12,11 @@ module ActiveRecord
           c
         end
       end
-      all.merge conditions.reduce(:or)
+      if conditions.empty?
+        all.none
+      else
+        all.merge conditions.reduce(:or)
+      end
     end
 
   end

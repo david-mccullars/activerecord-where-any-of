@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'activerecord-where-any-of'
-  s.version = '1.1.0'
+  s.version = '1.1.1'
   s.license = 'MIT'
   s.date = '2016-12-25'
   s.summary = 'A simple mixin to ActiveRecord::Base that allows use of OR arel relations.'

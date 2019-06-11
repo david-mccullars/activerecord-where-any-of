@@ -13,9 +13,13 @@ module ActiveRecord
         bind_values.concat(c.bind_values)
         __convert_string_wheres(c.where_values).reduce(:and)
       end
-      s = where(conditions.reduce(:or))
-      s.bind_values += bind_values if bind_values.present?
-      s
+      if conditions.empty?
+        respond_to?(:none) ? none : where('1=0')
+      else
+        s = where(conditions.reduce(:or))
+        s.bind_values += bind_values if bind_values.present?
+        s
+      end
     end
 
     def __convert_string_wheres(wheres)
