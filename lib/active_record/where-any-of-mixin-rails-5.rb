@@ -3,7 +3,6 @@ module ActiveRecord
   module WhereAnyOfMixin
 
     INVALID_RELATION_VALUES = %i[
-      bind
       eager_load
       group
       union_ordering

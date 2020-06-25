@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.name = 'activerecord-where-any-of'
-  s.version = '1.1.2'
+  s.version = '1.1.3'
   s.license = 'MIT'
-  s.date = '2020-05-12'
+  s.date = '2020-06-25'
   s.summary = 'A simple mixin to ActiveRecord::Base that allows use of OR arel relations.'
   s.description = 'Should work in Rails 3, 4, & 5.  However, in Rails 5 use of #or is prefered.'
   s.description = File.read(File.expand_path('../README.md', __FILE__))[/Description:\n-+\s*(.*?)\n\n/m, 1]
